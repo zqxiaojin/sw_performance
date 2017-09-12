@@ -11,7 +11,7 @@
           //启动的时候先反注册所有sw
           navigator.serviceWorker.getRegistration().then(function(registration) {
             if (registration) {
-              registration.unregister();
+              registration.unregister('./');
             }
 
           })
