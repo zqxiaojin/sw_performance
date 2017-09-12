@@ -1,5 +1,5 @@
-    function log() {
-      document.body.appendChild(document.createTextNode(Array.prototype.join.call(arguments, ", ") + '\n'));
+    function log(content) {
+      document.body.appendChild(document.createTextNode(content + '\n'));
       console.log.apply(console, arguments);
     }
 
