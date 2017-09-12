@@ -3,13 +3,13 @@
 self.addEventListener('fetch', function(event) {
 
 
-	if (event.request.url.indexOf("jsonBig.json") != -1) {
+	if (event.request.url.indexOf("img.jpg") != -1) {
 
 
 		if (event.request.url.indexOf("fake") != -1) {
 
 			event.respondWith(
- 			   caches.match('jsonBig.json')
+ 			   caches.match('img.jpg')
 			);
 		} else {
 			// event.respondWith(fetch(event.request));			
@@ -24,7 +24,7 @@ var PRECACHE = "fake";
 
 
 const PRECACHE_URLS = [
-  'jsonBig.json',
+  'img.jpg',
 ];
 
 // The install handler takes care of precaching the resources we always need.

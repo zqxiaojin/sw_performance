@@ -84,7 +84,7 @@
 
       var i = 0;
 
-      sendRequest("jsonBig.json?", function(xhr){
+      sendRequest("img.jpg?", function(xhr){
          
           var end = new Date().getTime();
           log("耗时 " +  (end - start));
@@ -103,7 +103,7 @@
 
       var i = 0;
 
-      sendRequest("jsonBig.json?", function(xhr){
+      sendRequest("img.jpg?", function(xhr){
          
           var end = new Date().getTime();
           log("SW注册后没有缓存地加载的耗时 " + (end - start));
@@ -120,7 +120,7 @@
 
       var i = 0;
 
-      sendRequest("jsonBig.json?fake", function(xhr){
+      sendRequest("img.jpg?fake", function(xhr){
          
           var end = new Date().getTime();
           log("SW注册后从缓存加载耗时 " + (end - start));
@@ -134,14 +134,14 @@
     function startMemoryCacheTest() {
 
         //先加载一次，让其加入到缓存
-        sendRequest("jsonBig.json?", function(xhr){
+        sendRequest("img.jpg?", function(xhr){
 
 
             var start = new Date().getTime();
 
             var i = 0;
 
-            sendRequest("jsonBig.json?", function(xhr){
+            sendRequest("img.jpg?", function(xhr){
                
                 var end = new Date().getTime();
                 log("从默认缓存加载耗时 " + (end - start));
