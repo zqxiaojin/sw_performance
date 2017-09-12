@@ -54,7 +54,7 @@
       sendRequest("jsonBig.json?", function(xhr){
          
           var end = new Date().getTime();
-          log("耗时 ", end - start);
+          log("耗时 " +  (end - start));
 
       }, i , KTestTime);
 
@@ -79,7 +79,7 @@
       sendRequest("jsonBig.json?fake", function(xhr){
          
           var end = new Date().getTime();
-          log("SW注册后耗时 ", end - start);
+          log("SW注册后耗时 " + (end - start));
 
       }, i , KTestTime);
 
@@ -96,7 +96,7 @@
       sendRequest("jsonBig.json", function(xhr){
          
           var end = new Date().getTime();
-          log("SW注册后缓存耗时 ", end - start);
+          log("SW注册后缓存耗时 " + (end - start));
 
       }, i , KTestTime);
 
