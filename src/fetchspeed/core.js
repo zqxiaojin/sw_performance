@@ -31,7 +31,7 @@
 
     }
 
-    if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+    if (navigator.serviceWorker && navigator.serviceWorker.getRegistration) {
 
           navigator.serviceWorker.getRegistration().then(function(registration) {
             if (registration && registration.active) {
