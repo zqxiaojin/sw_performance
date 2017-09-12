@@ -7,12 +7,16 @@
       log("Error", err);
     };
 
+    if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+          //启动的时候先反注册所有sw
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+         for(let registration of registrations) {
+          registration.unregister()
+        } })
+      } else {
+        log("该浏览器不支持service worker")
+      }
 
-    //启动的时候先反注册所有sw
-    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-     for(let registration of registrations) {
-      registration.unregister()
-    } })
 
     var KTestTime = 32;
 
