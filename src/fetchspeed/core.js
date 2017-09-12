@@ -50,14 +50,14 @@
 
     var KTestTime = 32;
 
-    function sendRequest(url, endFunction, index, count) {
+    function sendRequest(url, endFunction, index, count, useCache) {
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
           if (xhr.readyState == XMLHttpRequest.DONE) {
              
              if (++index < count) {
 
-                sendRequest(url, endFunction, index, count)
+                sendRequest(url, endFunction, index, count, useCache)
 
              } else {
                 
@@ -66,7 +66,12 @@
 
           }
       }
-      xhr.open('GET', url + "&" + new Date().getTime(), true);
+      if (useCache) {
+              xhr.open('GET', url + "&" + new Date().getTime(), true);        
+      } else {
+          xhr.open('GET', url , true);
+      }
+
       xhr.send(null);
 
 
@@ -120,6 +125,22 @@
           log("SW注册后缓存耗时 " + (end - start));
 
       }, i , KTestTime);
+
+
+    }
+
+
+    function startMemoryCacheTest() {
+      var start = new Date().getTime();
+
+      var i = 0;
+
+      sendRequest("jsonBig.json?fake", function(xhr){
+         
+          var end = new Date().getTime();
+          log("SW注册后缓存耗时 " + (end - start));
+
+      }, i , KTestTime, true);
 
 
     }
