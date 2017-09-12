@@ -8,9 +8,11 @@ self.addEventListener('fetch', function(event) {
 
 		if (event.request.url.indexOf("fake") != -1) {
 
-			event.respondWith(new Response("Hello world!"));
+			event.respondWith(
+ 			   caches.match('jsonBig.json')
+			);
 		} else {
-			event.respondWith(fetch(event.request));			
+			// event.respondWith(fetch(event.request));			
 		}
 
 	}

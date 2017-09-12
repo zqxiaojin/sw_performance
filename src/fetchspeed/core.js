@@ -67,9 +67,10 @@
           }
       }
       if (useCache) {
-              xhr.open('GET', url + "&" + new Date().getTime(), true);        
+          xhr.open('GET', url , true);                  
       } else {
-          xhr.open('GET', url , true);
+
+          xhr.open('GET', url + "&" + new Date().getTime(), true);    
       }
 
       xhr.send(null);
@@ -105,7 +106,7 @@
       sendRequest("jsonBig.json?", function(xhr){
          
           var end = new Date().getTime();
-          log("SW注册后耗时 " + (end - start));
+          log("SW注册后没有缓存地加载的耗时 " + (end - start));
 
       }, i , KTestTime);
 
@@ -122,7 +123,7 @@
       sendRequest("jsonBig.json?fake", function(xhr){
          
           var end = new Date().getTime();
-          log("SW注册后缓存耗时 " + (end - start));
+          log("SW注册后从缓存加载耗时 " + (end - start));
 
       }, i , KTestTime);
 
@@ -135,10 +136,10 @@
 
       var i = 0;
 
-      sendRequest("jsonBig.json?fake", function(xhr){
+      sendRequest("jsonBig.json?", function(xhr){
          
           var end = new Date().getTime();
-          log("SW注册后缓存耗时 " + (end - start));
+          log("从默认缓存加载耗时 " + (end - start));
 
       }, i , KTestTime, true);
 
