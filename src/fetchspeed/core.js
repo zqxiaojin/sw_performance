@@ -24,6 +24,7 @@
           navigator.serviceWorker.getRegistration().then(function(registration) {
             if (registration) {
               registration.unregister('./');
+              log("反注册成功");
             }
 
           })
