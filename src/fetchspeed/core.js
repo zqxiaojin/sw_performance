@@ -67,7 +67,7 @@
           }
       }
       if (useCache) {
-          xhr.open('GET', url , true);                  
+          xhr.open('GET', url + "&" + index, true);//这里是为了存一次进入磁盘
       } else {
 
           xhr.open('GET', url + "&" + new Date().getTime(), true);    
@@ -132,6 +132,9 @@
 
 
     function startMemoryCacheTest() {
+
+        sendRequest("jsonBig.json?", function(xhr){}, 0, KTestTime, true);
+
       var start = new Date().getTime();
 
       var i = 0;
