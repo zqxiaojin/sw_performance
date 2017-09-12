@@ -8,23 +8,16 @@
       font-size: 14px;
     }
   </style>
+  <script src="./core.js"> </script>
 </head>
-<body><script>
-    function log() {
-      document.body.appendChild(document.createTextNode(Array.prototype.join.call(arguments, ", ") + '\n'));
-      console.log.apply(console, arguments);
-    }
+<body>
 
-    window.onerror = function(err) {
-      log("Error", err);
-    };
+  <a href="#" onclick="startOriginalAjaxTest()">开始测试纯ajax情况</a>
 
-    navigator.serviceWorker.register('sw.js', {
-      scope: './'
-    }).then(function(sw) {
-      log("Registered!", sw);
-    }).catch(function(err) {
-      log("Error", err);
-    });
-  </script></body>
+  <a href="#" onclick="startSWAjaxTest()">开始测试注册sw后ajax情况</a>
+
+  <a href="#" onclick="startSWAjaxCacheTest()">开始测试注册sw后ajax返回cache的情况</a>
+
+
+  </body>
 </html>
