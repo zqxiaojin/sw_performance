@@ -9,10 +9,12 @@
 
     if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
           //启动的时候先反注册所有sw
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-         for(let registration of registrations) {
-          registration.unregister()
-        } })
+          navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for (var i = registrations.length - 1; i >= 0; i--) {
+              registrations[i].unregister()
+            }
+            
+          })
       } else {
         log("该浏览器不支持service worker")
       }
