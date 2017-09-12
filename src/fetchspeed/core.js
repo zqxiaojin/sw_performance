@@ -76,7 +76,7 @@
 
       var i = 0;
 
-      sendRequest("jsonBig.json?fake", function(xhr){
+      sendRequest("jsonBig.json?", function(xhr){
          
           var end = new Date().getTime();
           log("SW注册后耗时 " + (end - start));
@@ -93,7 +93,7 @@
 
       var i = 0;
 
-      sendRequest("jsonBig.json", function(xhr){
+      sendRequest("jsonBig.json?fake", function(xhr){
          
           var end = new Date().getTime();
           log("SW注册后缓存耗时 " + (end - start));
