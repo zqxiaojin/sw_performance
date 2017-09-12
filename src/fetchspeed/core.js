@@ -7,18 +7,44 @@
       log("Error", err);
     };
 
-    if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
-          //启动的时候先反注册所有sw
+    function Registr(){
+
+      navigator.serviceWorker.register('sw.js', {
+        scope: './'
+      }).then(function(sw) {
+        log("注册成功");
+      }).catch(function(err) {
+        log("Error" + err);
+      });
+    }
+
+
+    function UnRegistr(){
+
           navigator.serviceWorker.getRegistration().then(function(registration) {
             if (registration) {
               registration.unregister('./');
             }
 
           })
-      } else {
-        setTimeout(function(){log("该浏览器不支持service worker")}, 1000)
+
+    }
+
+    if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+
+          navigator.serviceWorker.getRegistration().then(function(registration) {
+            if (registration && registration.active) {
+               log("sw当前已经注册")
+            } else {
+              log("sw当前没有注册")
+            }
+
+          })
         
-      }
+    } else {
+
+      setTimeout(function(){log("该浏览器不支持service worker")}, 500)
+    }
 
 
     var KTestTime = 32;
@@ -63,13 +89,7 @@
 
     function startSWAjaxTest(){
 
-      navigator.serviceWorker.register('sw.js', {
-        scope: './'
-      }).then(function(sw) {
-        log("注册成功", sw);
-      }).catch(function(err) {
-        log("Error", err);
-      });
+
 
 
       var start = new Date().getTime();
