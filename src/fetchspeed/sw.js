@@ -1,11 +1,7 @@
-console.log("SW startup");
+// console.log("SW startup");
 
 self.addEventListener('fetch', function(event) {
 
-	// console.log("Fetch event", event);
-	// console.log(".request", event.request);
-	// console.log(".respondWith", event.respondWith);
-	// console.log(".default", event.default);
 
 	if (event.request.url.indexOf("jsonBig.json") != -1) {
 
@@ -30,7 +26,7 @@ const PRECACHE_URLS = [
 ];
 
 // The install handler takes care of precaching the resources we always need.
-self.addEventListener('install', event => {
+self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(PRECACHE)
       .then(cache => cache.addAll(PRECACHE_URLS))
