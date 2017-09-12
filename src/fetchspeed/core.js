@@ -9,9 +9,9 @@
 
     if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
           //启动的时候先反注册所有sw
-          navigator.serviceWorker.getRegistrations().then(function(registrations) {
-            for (var i = registrations.length - 1; i >= 0; i--) {
-              registrations[i].unregister()
+          navigator.serviceWorker.getRegistration().then(function(registration) {
+            if (registration) {
+              registration.unregister();
             }
 
           })
