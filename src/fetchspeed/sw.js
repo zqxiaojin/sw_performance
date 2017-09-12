@@ -12,7 +12,7 @@ self.addEventListener('fetch', function(event) {
  			   caches.match('jsonBig.json')
 			);
 		} else {
-			event.respondWith(fetch(event.request));			
+			// event.respondWith(fetch(event.request));			
 		}
 
 	}

@@ -133,18 +133,26 @@
 
     function startMemoryCacheTest() {
 
-        sendRequest("jsonBig.json?", function(xhr){}, 0, KTestTime, true);
+        //先加载一次，让其加入到缓存
+        sendRequest("jsonBig.json?", function(xhr){
 
-      var start = new Date().getTime();
 
-      var i = 0;
+            var start = new Date().getTime();
 
-      sendRequest("jsonBig.json?", function(xhr){
-         
-          var end = new Date().getTime();
-          log("从默认缓存加载耗时 " + (end - start));
+            var i = 0;
 
-      }, i , KTestTime, true);
+            sendRequest("jsonBig.json?", function(xhr){
+               
+                var end = new Date().getTime();
+                log("从默认缓存加载耗时 " + (end - start));
+
+            }, i , KTestTime, true);
+
+
+
+        }, 0, KTestTime, true);
+
+
 
 
     }
