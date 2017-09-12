@@ -13,10 +13,11 @@
             for (var i = registrations.length - 1; i >= 0; i--) {
               registrations[i].unregister()
             }
-            
+
           })
       } else {
-        log("该浏览器不支持service worker")
+        setTimeout(function(){log("该浏览器不支持service worker")}, 1000)
+        
       }
 
 
